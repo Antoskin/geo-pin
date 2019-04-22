@@ -1,9 +1,25 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { GoogleLogin } from 'react-google-login';
 // import Typography from "@material-ui/core/Typography";
 
+const clientId='610206240128-8v62hvorsentppdeva5366e415ke30j8.apps.googleusercontent.com';
+
 const Login = ({ classes }) => {
-  return <div>Login</div>;
+
+  const onSuccess = success => {
+    const token = success.getAuthResponse().id_token;
+
+    console.log({ token });
+  };
+
+  return <>
+    <GoogleLogin 
+      clientId={clientId} 
+      onSuccess={onSuccess}
+      isSignedIn={true}
+    />
+  </>
 };
 
 const styles = {
